@@ -1,0 +1,45 @@
+<%-include("partials/header",{isLoggedIn:isLoggedIn,userName:userName})-%>
+
+
+
+
+<div class="container mt-5 py-5 home-container">
+    <h1 class="homeHeading" style="margin-bottom: 20px;" >All Blogs 😇 </h1>
+
+
+    <%allPosts.forEach(function(post){%>
+    <div class="card mt-3">
+        <div  class="card-body">
+            
+                <form action="/delete" method="post" style="display: inline;">
+                    <input type="hidden" name="post" value="<%=post.postTitle%>"></input>
+                    <input type="hidden" name="postAuthor" value="<%=post.username%>"></input>
+                    <button type="submit" style=" border:none; color:tomato;"><i class="fa-solid fa-trash-can fa-2x" style="padding-right:4px; "></i></button>    
+                </form>
+                <form action="/edit" method="post" style="display: inline;">
+                    <input type="hidden" name="post" value="<%=post.postTitle%>"></input>
+                    <input type="hidden" name="postAuthor" value="<%=post.username%>"></input>
+                    <button type="submit" style=" border:none; color:cyan;"><i class="fa-solid fa-pen-to-square fa-2x"></i></button>    
+                </form>
+            
+            <p class="text-muted">published on: <%= post.postDate %></p>
+            <p class="text-muted">Author: <%=post.username%></p>
+            <h1 class="card-title"><%= post.postTitle %>  </h1>
+            <p class="card-text" ><%=post.postContent.substring(0,100)%>...<a href="/post/<%=post._id%>">Read More</a></p>
+        </div>
+    </div>
+    <%}) %>
+
+
+</div>
+
+<%-include("partials/footer")-%>
+
+
+
+
+
+
+
+
+
