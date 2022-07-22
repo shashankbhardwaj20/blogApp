@@ -1,31 +1,29 @@
 <%-include("partials/header",{isLoggedIn:isLoggedIn,userName:userName})-%>
 <div class="container">
-    <div class="card mt-3">
-        <div  class="card-body">
-            
-            <form action="/delete" method="post" style="display: inline;">
-                <input type="hidden" name="post" value="<%=postTitle%>"></input>
-                <input type="hidden" name="postAuthor" value="<%=authorName%>"></input>
-                <button type="submit" style=" border:none; color:tomato;"><i class="fa-solid fa-trash-can fa-2x" style="padding-right:4px; "></i></button>    
-            </form>
-            
-            <form action="/edit" method="post" style="display: inline;">
-                <input type="hidden" name="post" value="<%=postTitle%>"></input>
-                <input type="hidden" name="postAuthor" value="<%=authorName%>"></input>
-                <button type="submit" style=" border:none; color:cyan;"><i class="fa-solid fa-pen-to-square fa-2x"></i></button>    
-            </form>
+  <div class="card mt-3">
+      <div  class="card-body">
 
-            <p class="text-muted">published on: <%= postDate %></p>
-            <p class="text-muted">Author: <%=authorName%></p>
-            <h1 class="card-title"><%= postTitle %> </h1>
-            <p style="font-size: 1.5rem; line-height: 2.1;" class="card-text"><%=postContent%></p>
-            
-        </div>
-    </div>
-    
+          
+
+          <form action="/delete" method="post" style="display: inline;">
+              <input type="hidden" name="post" value="<%=postTitle%>"></input>
+              <input type="hidden" name="postAuthor" value="<%=authorName%>"></input>
+              <button type="submit" style=" border:none; color:black; background: none; margin-bottom: 4px;"><i class="fa-solid fa-trash-can fa-2x" style="padding-right:4px; "></i></button>    
+          </form>
+          
+          <form action="/edit" method="post" style="display: inline;">
+              <input type="hidden" name="post" value="<%=postTitle%>"></input>
+              <input type="hidden" name="postAuthor" value="<%=authorName%>"></input>
+              <button type="submit" style=" border:none; color:cyan; background: none; margin-bottom: 4px;"><i class="fa-solid fa-pen-to-square fa-2x"></i></button>    
+          </form>
+          
+          <p style="color:#FAFAFB;" >published on: <%= postDate %></p>
+          <p style="color:#FAFAFB;" >Author: <%=authorName%></p>
+          <h1 class="card-title"><%= postTitle %>  </h1>
+          <p style="font-size: 1.5rem; line-height: 2.1;"  class="card-text post-card-text" ><%=postContent%></p>
+          
+      </div>
+  </div>
+  
 </div>
-<%-include("partials/footer")-%>
-
-
-
-
+<%-include("partials/footer")-%> 

@@ -1,32 +1,65 @@
 <%-include("partials/header",{isLoggedIn:isLoggedIn,userName:userName})-%>
 
+<div class="container mt-5 py-5 header-container">
+    <div class="content-left">
+        <h1 class="blink">Welcome to CODEX!!</h1>
+        <span>A rapidly growing community of fellow coders to provide you a warm, formative experience.
+            CODEX is a social platform that aims to build an open community of students & working professionals.
+            <br>
+            It helps coders to solve their queries and feature their articles, mainly on Data stuctures and algorithm as ell as any kind of development.
+            Sign up today and get access to our free featured articles.</span>
+    </div>
+    <div class="content-right">
+        <img class="imageSpin" src="images/rubik.png" alt="iBlog">
+    </div>
+  </div>
 
 
 
-<div class="container mt-5 py-5 home-container">
-    <h1 class="homeHeading" style="margin-bottom: 20px;" >All Blogs 😇 </h1>
-
+<div class="container mt-2 py-5">
+    <div class="featured-article">
+    <h1 style="text-align: center;" class="homeHeading" style="margin-bottom: 20px;" >Featured Articles </h1>
+   </div>
+   <form action="" style="margin-top: 40px;">
+    <div class="input-group">
+        <div class="form-outline">
+          <input type="search" id="form1" class="form-control" placeholder="Search..."/>
+        </div>
+        <button type="button" class="btn btn-primary" style="height:40px">
+          <i class="fas fa-search " ></i>
+        </button>
+      </div>
+   </form>
 
     <%allPosts.forEach(function(post){%>
-    <div class="card mt-3">
+    <div class="card  mt-5" id="#<%= post.postTitle %>">
         <div  class="card-body">
             
-                <form action="/delete" method="post" style="display: inline;">
-                    <input type="hidden" name="post" value="<%=post.postTitle%>"></input>
-                    <input type="hidden" name="postAuthor" value="<%=post.username%>"></input>
-                    <button type="submit" style=" border:none; color:tomato;"><i class="fa-solid fa-trash-can fa-2x" style="padding-right:4px; "></i></button>    
-                </form>
-                <form action="/edit" method="post" style="display: inline;">
-                    <input type="hidden" name="post" value="<%=post.postTitle%>"></input>
-                    <input type="hidden" name="postAuthor" value="<%=post.username%>"></input>
-                    <button type="submit" style=" border:none; color:cyan;"><i class="fa-solid fa-pen-to-square fa-2x"></i></button>    
-                </form>
-            
-            <p class="text-muted">published on: <%= post.postDate %></p>
-            <p class="text-muted">Author: <%=post.username%></p>
             <h1 class="card-title"><%= post.postTitle %>  </h1>
-            <p class="card-text" ><%=post.postContent.substring(0,100)%>...<a href="/post/<%=post._id%>">Read More</a></p>
+            <p class="card-text" ><%=post.postContent.substring(0,100)%>...<a style="color: white;" href="/post/<%=post._id%>">Read More</a></p>
+            
+            
+            <div class="bottom-container">
+             <div class="bootom-left">
+                <p style="color:#FAFAFB;">published on: <%= post.postDate %></p>
+                <p style="color:#FAFAFB;">Author: <%=post.username%></p>
+             </div>   
+            <div  class="delete-edit-buttons">
+            <form  action="/delete" method="post" style="display: inline;">
+                <input type="hidden" name="post" value="<%=post.postTitle%>"></input>
+                <input type="hidden" name="postAuthor" value="<%=post.username%>"></input>
+                <button type="submit" style=" border:none; color:black; background: none;"><i class="fa-solid fa-trash-can fa-2x" style="padding-right:4px; "></i></button>    
+            </form>
+
+            <form  action="/edit" method="post" style="display: inline;">
+                <input type="hidden" name="post" value="<%=post.postTitle%>"></input>
+                <input type="hidden" name="postAuthor" value="<%=post.username%>"></input>
+                <button  type="submit" style=" border:none; color:cyan; background: none;"><i class="fa-solid fa-pen-to-square fa-2x"></i></button>    
+            </form>
+        `   </div>
+            </div>
         </div>
+
     </div>
     <%}) %>
 
