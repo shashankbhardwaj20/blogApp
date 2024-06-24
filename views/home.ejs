@@ -6,7 +6,7 @@
         <span>A rapidly growing community of fellow coders to provide you a warm, formative experience.
             CODEX is a social platform that aims to build an open community of students & working professionals.
             <br>
-            It helps coders to solve their queries and feature their articles, mainly on Data stuctures and algorithm as ell as any kind of development.
+            It helps coders to solve their queries and feature their articles, mainly on Data stuctures and algorithm as well as any kind of development.
             Sign up today and get access to our free featured articles.</span>
     </div>
     <div class="content-right">
@@ -36,7 +36,7 @@
         <div  class="card-body">
             
             <h1 class="card-title"><%= post.postTitle %>  </h1>
-            <p class="card-text" ><%=post.postContent.substring(0,100)%>...<a style="color: white;" href="/post/<%=post._id%>">Read More</a></p>
+            <p class="card-text" ><%=post.postContent.substring(0,100)%>...<a style="color: white;" href="/posts/<%=post._id%>">Read More</a></p>
             
             
             <div class="bottom-container">
@@ -45,13 +45,13 @@
                 <p style="color:#FAFAFB;">Author: <%=post.username%></p>
              </div>   
             <div  class="delete-edit-buttons">
-            <form  action="/delete" method="post" style="display: inline;">
+            <form  action="/posts/delete" method="post" style="display: inline;">
                 <input type="hidden" name="post" value="<%=post.postTitle%>"></input>
                 <input type="hidden" name="postAuthor" value="<%=post.username%>"></input>
                 <button type="submit" style=" border:none; color:black; background: none;"><i class="fa-solid fa-trash-can fa-2x" style="padding-right:4px; "></i></button>    
             </form>
 
-            <form  action="/edit" method="post" style="display: inline;">
+            <form  action="/posts/edit" method="post" style="display: inline;">
                 <input type="hidden" name="post" value="<%=post.postTitle%>"></input>
                 <input type="hidden" name="postAuthor" value="<%=post.username%>"></input>
                 <button  type="submit" style=" border:none; color:cyan; background: none;"><i class="fa-solid fa-pen-to-square fa-2x"></i></button>    

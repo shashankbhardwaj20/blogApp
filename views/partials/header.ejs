@@ -34,27 +34,32 @@
                 </li>
                 <% if(!isLoggedIn){ %>
                   <li class="nav-item active">
-                    <a class="nav-link" href="/login">LOGIN<span class="sr-only"></span></a>
+                    <a class="nav-link" href="/users/login">LOGIN<span class="sr-only"></span></a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="/register">REGISTER<span class="sr-only"></span></a>
+                    <a class="nav-link" href="/users/register">REGISTER<span class="sr-only"></span></a>
                   </li>
                 <% } %>
                 <% if(isLoggedIn){ %>
                   <li class="nav-item active">
-                    <a class="nav-link" href="/compose">COMPOSE<span class="sr-only"></span></a>
+                    <a class="nav-link" href="/posts/compose">COMPOSE<span class="sr-only"></span></a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="/logout">LOGOUT<span class="sr-only"></span></a>
+                    <a class="nav-link" href="/users/logout">LOGOUT<span class="sr-only"></span></a>
                   </li>
                 <% } %>
             </ul>
             <% if(isLoggedIn){ %>
-            <a class="nav-link" href="#" style="text-decoration: none; color:white; font-size: 12px;"><%=userName%><span class="sr-only"></span></a>
+            <a class="nav-link" href="/profile" style="text-decoration: none; color:white; font-size: 12px;"><%=userName%><span class="sr-only"></span></a>
             <% } %>
         </div>
     </div>
   </nav>
+  
+  <div  class="alert alert-primary" role="alert">
+      <div style="text-align: center;"><a href="/posts/composeP">Use AI to write blogs.</a>🚀🚀</div>
+  </div>
+  
     
 
 

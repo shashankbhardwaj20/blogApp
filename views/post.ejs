@@ -2,16 +2,13 @@
 <div class="container">
   <div class="card mt-3">
       <div  class="card-body">
-
-          
-
           <form action="/delete" method="post" style="display: inline;">
               <input type="hidden" name="post" value="<%=postTitle%>"></input>
               <input type="hidden" name="postAuthor" value="<%=authorName%>"></input>
               <button type="submit" style=" border:none; color:black; background: none; margin-bottom: 4px;"><i class="fa-solid fa-trash-can fa-2x" style="padding-right:4px; "></i></button>    
           </form>
           
-          <form action="/edit" method="post" style="display: inline;">
+          <form action="/edit" method="POST" style="display: inline;">
               <input type="hidden" name="post" value="<%=postTitle%>"></input>
               <input type="hidden" name="postAuthor" value="<%=authorName%>"></input>
               <button type="submit" style=" border:none; color:cyan; background: none; margin-bottom: 4px;"><i class="fa-solid fa-pen-to-square fa-2x"></i></button>    

@@ -1,0 +1,20 @@
+<%-include("partials/header",{isLoggedIn:isLoggedIn,userName:userName})-%>
+
+<div class="container mt-5">
+    <h3 class="my-3">Take help of AI to write Post 🚀🚀.</h3>
+    <form action="/posts/composeP" method="POST">
+        <textarea name="postContent" cols="15" rows="5" class="mt-3 form-control" placeholder="Write your prompt here!!"
+            required></textarea>
+        <input type="submit" value="Submit" class="mt-5 btn btn-md btn-danger">
+    </form>
+</div>
+
+<%-include("partials/footer")-%>
+
+
+
+
+
+
+
+
