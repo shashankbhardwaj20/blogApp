@@ -60,10 +60,10 @@ function handelDeletePostRequest(req,res){
 };
 
 function handelSeeFullPostRequest(req,res){  
-  // console.log("hit...here");
+  
   const loginStatus = checkIsLogged();
   const userName = getUserName();
-  // console.log(req.params.id);
+
   const objId = "" + req.params.id;
   const postID = new ObjectId(objId);
   Post.findOne({_id:postID},function(err,postFound){
@@ -89,7 +89,7 @@ function handelUserAIGetRequest (req,res){
 
 async function handelUserAIPostRequest(req,res){
   userPrompt = req.body.postContent;
-  // Access your API key as an environment variable (see "Set up your API key" above)
+  
   const key = process.env.key;
   const genAI = new GoogleGenerativeAI(key);
 
@@ -100,12 +100,12 @@ async function handelUserAIPostRequest(req,res){
 
         const result = await model.generateContent(userPrompt);
         const response = await result.response;
-        const text = await response.text(); // Await the text extraction
+        const text = await response.text(); 
         const loginStatus = checkIsLogged();
         const userName = getUserName();
         res.render("GenText", {
-            isLoggedIn: req.isLoggedIn, // Adjust as per your authentication logic
-            userName: req.userName,     // Adjust as per your authentication logic
+            isLoggedIn: req.isLoggedIn, 
+            userName: req.userName,    
             text: text,
         });
     } catch (error) {
