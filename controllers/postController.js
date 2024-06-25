@@ -110,7 +110,7 @@ async function handelUserAIPostRequest(req,res){
         });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ msg: "Error" });
+        res.status(500).send({ msg: error });
     }
 }
 
