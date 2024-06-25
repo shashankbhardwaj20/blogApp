@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
-const stamp = "Shashak@8165Bhardwaj@2000";
+require('dotenv').config();
+const stamp = process.env.SECRET;
 function setUser(user){
     const signedToken = jwt.sign(
         {

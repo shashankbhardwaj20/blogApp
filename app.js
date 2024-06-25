@@ -8,7 +8,7 @@ const postRouter = require("./routes/posts");
 const userRouter = require("./routes/users");
 const manageAcess = require("./middlewares/manageAcess");
 const cookieParser = require("cookie-parser");
-require('dotenv').config()
+require('dotenv').config();
 
 const url = process.env.URL;
 connectToMongoDB(url);
