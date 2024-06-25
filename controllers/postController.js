@@ -104,8 +104,8 @@ async function handelUserAIPostRequest(req,res){
         const loginStatus = checkIsLogged();
         const userName = getUserName();
         res.render("GenText", {
-            isLoggedIn: req.isLoggedIn, 
-            userName: req.userName,    
+            isLoggedIn: loginStatus, 
+            userName: userName,    
             text: text,
         });
     } catch (error) {
