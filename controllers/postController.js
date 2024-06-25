@@ -28,7 +28,7 @@ function handelCreatePostRequest(req,res){
 function handelEditPostRequest(req,res){
   const userName = getUserName();
   const loginStatus = checkIsLogged();
-  if(!loginStatus) res.redirect('/login');
+  if(!loginStatus) res.redirect('/users/login');
   else if(loginStatus && (userName!=req.body.postAuthor)) res.redirect('/');
   else {
     Post.findOne({postTitle:req.body.post},function(err,postFound){
@@ -47,7 +47,7 @@ function handelEditPostRequest(req,res){
 function handelDeletePostRequest(req,res){
   const loginStatus = checkIsLogged();
   const userName = getUserName();
-  if(!loginStatus) res.redirect('/login');
+  if(!loginStatus) res.redirect('/users/login');
   else if(loginStatus && (userName!=req.body.postAuthor)) res.redirect('/');
   else {
     Post.deleteOne({postTitle:req.body.post},function(err){
