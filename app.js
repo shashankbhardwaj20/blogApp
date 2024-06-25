@@ -1,5 +1,4 @@
 //jshint esversion:6
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const {connectToMongoDB} = require("./connection/connection");
@@ -8,10 +7,12 @@ const postRouter = require("./routes/posts");
 const userRouter = require("./routes/users");
 const manageAcess = require("./middlewares/manageAcess");
 const cookieParser = require("cookie-parser");
+const path =  require('path');
 require('dotenv').config();
 
 const url = process.env.URL;
 connectToMongoDB(url);
+
 
 const app = express();
 app.set('view engine', 'ejs');
