@@ -5,6 +5,7 @@ const {getUserName,setUserName}  =  require("../utils/userUtils");
 const currentDay = require("../utils/currentDay");
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
+require('dotenv').config();
 
 
 function composePost(req,res){
@@ -89,7 +90,8 @@ function handelUserAIGetRequest (req,res){
 async function handelUserAIPostRequest(req,res){
   userPrompt = req.body.postContent;
   // Access your API key as an environment variable (see "Set up your API key" above)
-  const genAI = new GoogleGenerativeAI("AIzaSyB_sE8h8bCh8jGjD5-coXlwzbmZnGNAJLQ");
+  const key = process.env.key;
+  const genAI = new GoogleGenerativeAI(key);
 
   async function run() {
     try {
@@ -107,7 +109,7 @@ async function handelUserAIPostRequest(req,res){
             text: text,
         });
     } catch (error) {
-        console.error("Error");
+        console.error(error);
         res.status(500).send({ msg: "Error" });
     }
 }
