@@ -11,7 +11,7 @@ Router.get("/",function(req,res){
       if(!err){
         const loginStatus = checkIsLogged();
         const userName = getUserName();
-        res.render("home",{allPosts:posts,isLoggedIn:loginStatus,userName:userName});
+        res.render("../views/home",{allPosts:posts,isLoggedIn:loginStatus,userName:userName});
       }
     });
 });
@@ -19,19 +19,11 @@ Router.get("/",function(req,res){
 Router.get("/about",function(req,res){
   const loginStatus = checkIsLogged();
   const userName = getUserName();
-  res.render("about",{isLoggedIn:loginStatus,userName:userName});
+  res.render("../views/about",{isLoggedIn:loginStatus,userName:userName});
 });
 
-Router.get("/contact",function(req,res){
-  const loginStatus = checkIsLogged();
-  const userName = getUserName();
-  res.render("contact",{isLoggedIn:loginStatus,userName:userName});
-});
 
-Router.get("/subscibeToPremium",function(req,res){
-  const loginStatus = checkIsLogged();
-  const userName = getUserName();
-  res.render("../views/subscriptionPage",{isLoggedIn:loginStatus,userName:userName});
-});
+
+
 
 module.exports = Router;

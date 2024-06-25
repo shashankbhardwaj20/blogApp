@@ -10,7 +10,7 @@ const ObjectId = mongoose.Types.ObjectId;
 function composePost(req,res){
     const loginStatus = checkIsLogged();
     const userName = getUserName();
-    res.render("compose",{isLoggedIn:loginStatus,userName:userName});
+    res.render("../views/compose",{isLoggedIn:loginStatus,userName:userName});
 }
 function handelCreatePostRequest(req,res){
     const userName = getUserName();
