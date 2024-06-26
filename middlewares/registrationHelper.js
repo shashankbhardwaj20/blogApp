@@ -3,7 +3,7 @@ const UnverifiedUser = require("../models/unverifiedUser");
 const {setLogin}  =  require("../utils/loginUtils");
 const {setUserName}  =  require("../utils/userUtils");
 const {setUser} = require("../utils/auth");
-const {hashPassword} =  require("../utils/manageHashing");
+const {hashPassword,comparePasswords} =  require("../utils/manageHashing");
 const {sendOtpEmail} = require("../utils/email");
 const {passwordValidation} = require("../utils/passwordValidation");
 
@@ -15,13 +15,18 @@ async function registrationHelper(req,res){
         res.redirect("/users/register");
     }
     else{
-        setLogin();
-        setUserName(enteredUserName);
         const userFound = await User.findOne({email:enteredUserEmail});
         if(userFound){
-            signedToken = setUser(userFound);
-            res.cookie("uid",signedToken);
-            res.redirect('/');
+            if(comparePasswords(enteredPassword,userFound.password)){
+                setLogin();
+                setUserName(enteredUserName);
+                signedToken = setUser(userFound);
+                res.cookie("uid",signedToken);
+                res.redirect('/');
+            }
+            else{
+                res.redirect("/users/register");
+            }
         }
         else{
             const hashedPassword = await hashPassword(req.body.password);

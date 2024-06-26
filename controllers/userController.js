@@ -21,13 +21,14 @@ function userLoginPage(req, res) {
   }
 }
 
-function handelUserLogin(req, res) {
+function  handelUserLogin(req, res) {
   const emailEntered = req.body.email;
   const passwordEntered = req.body.password;
-  User.findOne({email: emailEntered}, function(err, userFound) {
+  User.findOne({email: emailEntered}, async function(err, userFound) {
     if (!err && userFound) {
       if (userFound) {
-        if(!(comparePasswords(passwordEntered,userFound.password))){
+        const comparisonResult = await comparePasswords(passwordEntered,userFound.password);
+        if(comparisonResult===false){
           res.redirect("/users/login");
         }
         else{
@@ -71,7 +72,9 @@ function userRegisterPage(req,res){
     else {
       setUserName(userFound.userName);
       setLogin();
-      res.redirect("/");
+      const signedToken = setUser(userFound);
+      res.cookie("uid",signedToken);
+      res.redirect('/');
     }
 };
 
@@ -81,8 +84,6 @@ async function handelUserRegister(req,res,user){
     const providedusername = user.userName;
     const providedEmail = user.email;
     const providedPassword = user.password;
-    setLogin();
-    setUserName(providedusername);
     const newUser = new User({
       userName : providedusername,
       email : providedEmail,
@@ -92,6 +93,10 @@ async function handelUserRegister(req,res,user){
     await UnverifiedUser.deleteOne({email:providedEmail});
     const signedToken = setUser(newUser);
     res.cookie("uid",signedToken);
+    console.log(newUser);
+    console.log(signedToken);
+    setLogin();
+    setUserName(providedusername);
     res.redirect('/');
   }
   catch (err) {
