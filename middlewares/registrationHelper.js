@@ -17,7 +17,8 @@ async function registrationHelper(req,res){
     else{
         const userFound = await User.findOne({email:enteredUserEmail});
         if(userFound){
-            if(comparePasswords(enteredPassword,userFound.password)){
+            const comparisonResult = await comparePasswords(enteredPassword,userFound.password)
+            if(comparisonResult===true){
                 setLogin();
                 setUserName(enteredUserName);
                 signedToken = setUser(userFound);
